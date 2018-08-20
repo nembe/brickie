@@ -1,0 +1,1782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="4.0" jmeter="4.0 r1823414">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Browser Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${testIterations}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Server-Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="Driver" elementType="Argument">
+              <stringProp name="Argument.name">Driver</stringProp>
+              <stringProp name="Argument.value">C:/tmp/driver/chromedriver.exe</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">The location of the driver have to be set in the &quot;PreProcessor&quot;</stringProp>
+            </elementProp>
+            <elementProp name="urlNormal" elementType="Argument">
+              <stringProp name="Argument.name">urlNormal</stringProp>
+              <stringProp name="Argument.value">${__P(server,)}/Yellowbrick-aanmelden</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">The URL of  the server  where the registration App is running</stringProp>
+            </elementProp>
+            <elementProp name="urlAnwb" elementType="Argument">
+              <stringProp name="Argument.name">urlAnwb</stringProp>
+              <stringProp name="Argument.value">${__P(server,)}/Yellowbrick-aanmelden/subscribe/register.do?productGroupId=4</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">The ANWB URL of  the server  where the registration App is running</stringProp>
+            </elementProp>
+            <elementProp name="usersData" elementType="Argument">
+              <stringProp name="Argument.name">usersData</stringProp>
+              <stringProp name="Argument.value">${__P(headlessData,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">../data/registration-users-chrome.csv</stringProp>
+            </elementProp>
+            <elementProp name="threads" elementType="Argument">
+              <stringProp name="Argument.name">threads</stringProp>
+              <stringProp name="Argument.value">${__P(threads,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">number of users</stringProp>
+            </elementProp>
+            <elementProp name="testIterations" elementType="Argument">
+              <stringProp name="Argument.name">testIterations</stringProp>
+              <stringProp name="Argument.value">${__P(testIterations,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">number of iterations</stringProp>
+            </elementProp>
+            <elementProp name="anwb" elementType="Argument">
+              <stringProp name="Argument.name">anwb</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">1/0 - true/false  (if there is a preference to test anwb registration set to true)</stringProp>
+            </elementProp>
+            <elementProp name="mail" elementType="Argument">
+              <stringProp name="Argument.name">mail</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Email adres for registration must be unique</stringProp>
+            </elementProp>
+            <elementProp name="licenseplates" elementType="Argument">
+              <stringProp name="Argument.name">licenseplates</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">License plate of the car at registration</stringProp>
+            </elementProp>
+            <elementProp name="mobilenumbers" elementType="Argument">
+              <stringProp name="Argument.name">mobilenumbers</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Phone number of the customer </stringProp>
+            </elementProp>
+            <elementProp name="cars" elementType="Argument">
+              <stringProp name="Argument.name">cars</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.desc">Number of cars</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="pass" elementType="Argument">
+              <stringProp name="Argument.name">pass</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Number of car passes</stringProp>
+            </elementProp>
+            <elementProp name="infix" elementType="Argument">
+              <stringProp name="Argument.name">infix</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Between surname </stringProp>
+            </elementProp>
+            <elementProp name="firstname" elementType="Argument">
+              <stringProp name="Argument.name">firstname</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="initials" elementType="Argument">
+              <stringProp name="Argument.name">initials</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">initialen</stringProp>
+            </elementProp>
+            <elementProp name="lastname" elementType="Argument">
+              <stringProp name="Argument.name">lastname</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="birthDay" elementType="Argument">
+              <stringProp name="Argument.name">birthDay</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="birthMonth" elementType="Argument">
+              <stringProp name="Argument.name">birthMonth</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="birthYear" elementType="Argument">
+              <stringProp name="Argument.name">birthYear</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="zipCode" elementType="Argument">
+              <stringProp name="Argument.name">zipCode</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="city" elementType="Argument">
+              <stringProp name="Argument.name">city</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="accountNr" elementType="Argument">
+              <stringProp name="Argument.name">accountNr</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Bank account number</stringProp>
+            </elementProp>
+            <elementProp name="isBusiness" elementType="Argument">
+              <stringProp name="Argument.name">isBusiness</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">1/0 - true/false (If it is a business person)</stringProp>
+            </elementProp>
+            <elementProp name="accountHolderName" elementType="Argument">
+              <stringProp name="Argument.name">accountHolderName</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">The holder of the account</stringProp>
+            </elementProp>
+            <elementProp name="businessName" elementType="Argument">
+              <stringProp name="Argument.name">businessName</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Name of the company</stringProp>
+            </elementProp>
+            <elementProp name="identification" elementType="Argument">
+              <stringProp name="Argument.name">identification</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">KVK</stringProp>
+            </elementProp>
+            <elementProp name="isNotSameFacAdres" elementType="Argument">
+              <stringProp name="Argument.name">isNotSameFacAdres</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">1/0 - true/false (Other mail address)</stringProp>
+            </elementProp>
+            <elementProp name="blgaddressline1" elementType="Argument">
+              <stringProp name="Argument.name">blgaddressline1</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Street name (post adres)</stringProp>
+            </elementProp>
+            <elementProp name="blgaddressline2" elementType="Argument">
+              <stringProp name="Argument.name">blgaddressline2</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Addition to house number (post adres)</stringProp>
+            </elementProp>
+            <elementProp name="blgaddressline3" elementType="Argument">
+              <stringProp name="Argument.name">blgaddressline3</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Optional (post adres)</stringProp>
+            </elementProp>
+            <elementProp name="blgzipcode" elementType="Argument">
+              <stringProp name="Argument.name">blgzipcode</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Postal code   (post adres)</stringProp>
+            </elementProp>
+            <elementProp name="addressFirst" elementType="Argument">
+              <stringProp name="Argument.name">addressFirst</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Street name (adres)</stringProp>
+            </elementProp>
+            <elementProp name="addressSecond" elementType="Argument">
+              <stringProp name="Argument.name">addressSecond</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Addition to house number (adres)</stringProp>
+            </elementProp>
+            <elementProp name="addressThird" elementType="Argument">
+              <stringProp name="Argument.name">addressThird</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Optional (adres)</stringProp>
+            </elementProp>
+            <elementProp name="gender" elementType="Argument">
+              <stringProp name="Argument.name">gender</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="title" elementType="Argument">
+              <stringProp name="Argument.name">title</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Mrs, Dr, Mr</stringProp>
+            </elementProp>
+            <elementProp name="housenumber" elementType="Argument">
+              <stringProp name="Argument.name">housenumber</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="blghousenumber" elementType="Argument">
+              <stringProp name="Argument.name">blghousenumber</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Housenumber  (post adres)</stringProp>
+            </elementProp>
+            <elementProp name="blgcity" elementType="Argument">
+              <stringProp name="Argument.name">blgcity</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">City (post adres)</stringProp>
+            </elementProp>
+            <elementProp name="creditCard" elementType="Argument">
+              <stringProp name="Argument.name">creditCard</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">1/0 - true/false (Checkout with credit card)</stringProp>
+            </elementProp>
+            <elementProp name="cardnumber" elementType="Argument">
+              <stringProp name="Argument.name">cardnumber</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="cardExpMonth" elementType="Argument">
+              <stringProp name="Argument.name">cardExpMonth</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="cardExpYear" elementType="Argument">
+              <stringProp name="Argument.name">cardExpYear</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="cardVerf" elementType="Argument">
+              <stringProp name="Argument.name">cardVerf</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="anwbNummer" elementType="Argument">
+              <stringProp name="Argument.name">anwbNummer</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">ANWB membership number</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data voor Registratie" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">${usersData}</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames"></stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223  Headless" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">import org.openqa.selenium.WebDriver;
+import org.apache.jmeter.threads.JMeterContextService;
+import com.googlecode.jmeter.plugins.webdriver.config.WebDriverConfig;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+try {
+
+//Uncomment the next line for running this script in Jmeter GUI.
+//System.setProperty(&quot;webdriver.chrome.driver&quot;, &quot;C:/tmp/driver/chromedriver.exe&quot;);
+
+ChromeOptions options = new ChromeOptions();
+options.addArguments(&quot;headless&quot;);
+options.addArguments(&quot;--window-size=1680,1050&quot;);
+
+WebDriver driver= new ChromeDriver(options);
+JMeterContextService.getContext().getCurrentSampler().getThreadContext().getVariables().putObject(WebDriverConfig.BROWSER, driver);
+	
+} catch (Throwable ex) {
+    log.error(&quot;Error in Beanshell&quot;, ex);
+    throw ex;
+}
+</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
+        <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 Post-Headless" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import java.lang.Runtime;
+import java.lang.System;
+
+//Stopping and cleaning up the browser and claim back memory... 
+String os = System.getProperty(&quot;os.name&quot;).toLowerCase();
+
+ if (os.contains(&quot;win&quot;)) {
+     Runtime.getRuntime().exec(&quot;taskkill /F /T /IM chromedriver.exe&quot;);
+ } else{ 	
+     //Runtime.getRuntime().exec(&quot;pkill -9 -x chromedriver.exe&quot;);
+     //Runtime.getRuntime().exec(&quot;killall -r chromedriver.exe&quot;);
+ }</stringProp>
+        </JSR223PostProcessor>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc -  Chrome" enabled="true">
+          <stringProp name="WebDriverSampler.script">//Headless Browser Sampler for testing the different functionalities on the registration proces.
+//WebDriver classes
+var pkg = JavaImporter(org.openqa.selenium); 
+var ui = JavaImporter(org.openqa.selenium.support.ui) 
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait); 
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions;
+var timeunit = java.util.concurrent.TimeUnit;
+
+WDS.sampleResult.sampleStart(); 
+WDS.log.info(&quot;Sample started &quot;);
+WDS.browser.manage().window().maximize()
+WDS.browser.manage().timeouts().implicitlyWait(30,timeunit.SECONDS);
+
+try {
+
+var vars = org.apache.jmeter.threads.JMeterContextService.getContext().getVariables();
+var url = vars.get(&apos;urlNormal&apos;);
+var urlAnwb = vars.get(&apos;urlAnwb&apos;);
+var anwb = vars.get(&apos;anwb&apos;);
+var mail = vars.get(&apos;mail&apos;);
+var licenseplates = vars.get(&apos;licenseplates&apos;);
+var mobilenumbers = vars.get(&apos;mobilenumbers&apos;);
+var cars = vars.get(&apos;cars&apos;);
+var pass = vars.get(&apos;pass&apos;);
+var infix = vars.get(&apos;infix&apos;);
+var firstname = vars.get(&apos;firstname&apos;);
+var initials = vars.get(&apos;initials&apos;);
+var lastname = vars.get(&apos;lastname&apos;);
+var birthDay = vars.get(&apos;birthDay&apos;);
+var birthMonth = vars.get(&apos;birthMonth&apos;);
+var birthYear = vars.get(&apos;birthYear&apos;);
+var zipCode = vars.get(&apos;zipCode&apos;);
+var city = vars.get(&apos;city&apos;);
+var accountNr = vars.get(&apos;accountNr&apos;);
+var radioBusiness = vars.get(&apos;isBusiness&apos;);
+var accountHolderName = vars.get(&apos;accountHolderName&apos;);
+var businessName = vars.get(&apos;businessName&apos;);
+var identification = vars.get(&apos;identification&apos;);
+var sameFacAdres = vars.get(&apos;isNotSameFacAdres&apos;);
+var billingaddressline1 = vars.get(&apos;blgaddressline1&apos;);
+var billingaddressline2 = vars.get(&apos;blgaddressline2&apos;);
+var billingaddressline3 = vars.get(&apos;blgaddressline3&apos;);
+var billingzipcode = vars.get(&apos;blgzipcode&apos;);
+var adres1 = vars.get(&apos;addressFirst&apos;);
+var adres2 = vars.get(&apos;addressSecond&apos;);
+var adres3 = vars.get(&apos;addressThird&apos;);
+var gender = vars.get(&apos;gender&apos;);
+var title = vars.get(&apos;title&apos;);
+var phonenr = vars.get(&apos;phonenr&apos;);
+var directdebititpermission = vars.get(&apos;ddebitperm&apos;);
+var housenumber = vars.get(&apos;housenumber&apos;);
+var blghousenumber = vars.get(&apos;blghousenumber&apos;);
+var blgcity = vars.get(&apos;blgcity&apos;);
+var creditCard = vars.get(&apos;creditCard&apos;);
+var cardnumber = vars.get(&apos;cardnumber&apos;);
+var cardExpMonth = vars.get(&apos;cardExpMonth&apos;);
+var cardExpYear = vars.get(&apos;cardExpYear&apos;);
+var cardVerf = vars.get(&apos;cardVerf&apos;);
+var anwbNummer = vars.get(&apos;anwbNummer&apos;);
+
+
+//opens website specified in &apos;Yellowbrick-aanmelden&apos;
+if(anwb == 1){
+	WDS.log.info(&quot;Sample - ANWB Yellowbrick-aanmelden with URL Anwb = &quot;+urlAnwb);
+	WDS.browser.get(urlAnwb); 
+	} else {
+	WDS.log.info(&quot;Sample - Default Yellowbrick-aanmelden with URL = &quot;+url);
+	WDS.browser.get(url); 
+}
+
+//First cookie that pops up!
+if(!WDS.browser.findElements(pkg.By.id(&apos;cookie-consent&apos;)).isEmpty()){	
+  var cookieField = WDS.browser.findElement(pkg.By.id(&apos;cookie-consent&apos;));
+  if (cookieField.isDisplayed()) {  
+  	var cookieSettingsButton = WDS.browser.findElement(pkg.By.xpath(&quot;//*[@id=&apos;cookie-consent&apos;]/div[1]/a[2]/i&quot;));   
+     if (cookieSettingsButton.isDisplayed()) { 
+           cookieSettingsButton.click();         
+           var cookieSetButton = WDS.browser.findElement(pkg.By.xpath(&quot;//a[@id=&apos;cc-set-cookie&apos;]&quot;));           
+         if(cookieSetButton.isDisplayed()){
+         	cookieSetButton.click(); 
+          WDS.log.info(&quot;Clicked on cookie set button 1&quot;);
+         	}       
+     }
+  }
+}
+
+java.lang.Thread.sleep(1000);	
+
+//If ANWB Lidmaatschap
+if(anwb == 1){
+
+WDS.log.info(&quot;ANWB Lidmaatschap&quot;);
+
+//inserting Anwb number 
+if(!WDS.browser.findElements(pkg.By.id(&apos;externalMembershipCodeValue&apos;)).isEmpty()){ 
+   var anwbNumberField = WDS.browser.findElement(pkg.By.id(&apos;externalMembershipCodeValue&apos;));
+   if (anwbNumberField.isDisplayed()) {
+      anwbNumberField.click();     
+      anwbNumberField.sendKeys([anwbNummer]); 
+      WDS.log.info(&quot;Inserted anwb Number &quot;);
+   }      
+ }
+
+}
+
+//saves how many cars there going to be park
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//div[@id=&apos;content-main-block-page&apos;]/div[1]/div[5]/div[3]/a[2]&quot;)).isEmpty()){ 
+var wait20 = new support_ui.WebDriverWait(WDS.browser, 100);	
+var addCarsField = wait20.until(conditions.presenceOfElementLocated(pkg.By.xpath(&quot;//div[@id=&apos;content-main-block-page&apos;]/div[1]/div[5]/div[3]/a[2]&quot;)));
+
+ if (addCarsField.isDisplayed()) {
+ 	  WDS.log.info(&quot;Start clicking/adding extra cars&quot;);     
+       addCarsField.click();       
+       WDS.log.info(&quot;Done Inserting/adding extra cars&quot;);      
+   }   
+ }
+
+//My car
+WDS.log.info(&quot;My car: Try inserting cars&quot;);
+
+var licensePlateArr = licenseplates.split(&quot;|&quot;);
+var mobileArr = mobilenumbers.split(&quot;|&quot;);
+for(i = 0; i &lt; cars; i++) {
+    WDS.log.info(&quot;My car: should insert car &quot; + i);
+
+    //save licensePlate
+    if(!WDS.browser.findElements(pkg.By.id(&apos;cars&apos;+i+&apos;.licensePlate&apos;)).isEmpty()) {
+        var wait = new support_ui.WebDriverWait(WDS.browser, 100);
+        var licensePlateField = wait.until(conditions.elementToBeClickable(pkg.By.id(&apos;cars&apos;+i+&apos;.licensePlate&apos;)));
+        if (licensePlateField.isDisplayed()) {
+            var plate = licensePlateArr[i];
+            licensePlateField.click();  	
+            licensePlateField.sendKeys([plate]); 
+            WDS.log.info(&quot;Inserted licensePlate &quot; + i + &quot;: &quot; + plate);
+        }
+    }
+
+    //saves mobile number.
+    if(!WDS.browser.findElements(pkg.By.id(&apos;cars&apos;+i+&apos;.mobile&apos;)).isEmpty()){ 
+    var mobileField = WDS.browser.findElement(pkg.By.id(&apos;cars&apos;+i+&apos;.mobile&apos;));
+    if (mobileField.isDisplayed()) {
+        var num = mobileArr[i];
+         mobileField.click();     
+         mobileField.sendKeys([num]); 
+         WDS.log.info(&quot;Inserted mobile &quot; + i + &quot;: &quot; + num);
+      }
+    }
+}
+
+//Q-Park and P+R pass.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;cars[0].extraPlusPassAmount&apos;]&quot;)).isEmpty()){ 
+var passField = WDS.browser.findElement(pkg.By.xpath(&quot;//input[@id=&apos;cars[0].extraPlusPassAmount&apos;]&quot;));
+  if (passField.isDisplayed()) {
+     passField.click();
+     passField.clear();
+     passField.sendKeys([pass]); 
+     WDS.log.info(&quot;Inserted Q-Park and P+R pass&quot;);
+  }
+}
+
+//saves isBusinessField field.  
+if(radioBusiness != 0){
+WDS.log.info(&quot;Customer is a Business member &quot;);
+	
+ if(!WDS.browser.findElements(pkg.By.xpath(&quot;//div[@class=&apos;customer-type-button selected&apos;]/div[@class=&apos;business&apos;]&quot;)).isEmpty()){ 
+   var isBusinessField = WDS.browser.findElement(pkg.By.xpath(&quot;//div[@class=&apos;customer-type-button selected&apos;]/div[@class=&apos;business&apos;]&quot;));
+   if (isBusinessField.isDisplayed()) {
+     isBusinessField.click(); 
+     WDS.log.info(&quot;Inserted isBusinessField&quot;);
+   }
+  }
+}
+
+
+//Click body.
+var bodyField = WDS.browser.findElement(pkg.By.id(&apos;body&apos;)); 
+bodyField.click(); 
+WDS.log.info(&quot;Clicked body&quot;);
+
+java.lang.Thread.sleep(1000);
+
+//Clicking the first Button
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)).isEmpty()){ 
+var wait28 = new support_ui.WebDriverWait(WDS.browser, 100);	
+var firstButton = wait28.until(conditions.presenceOfElementLocated(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)));
+  if (firstButton.isDisplayed()) {
+     firstButton.sendKeys(org.openqa.selenium.Keys.RETURN);
+     WDS.log.info(&quot;Clicked on the First button&quot;);
+  }
+}
+
+//Cookie 2
+//Only needed on localhost for browser that don&apos;t accept/store the cookie coming from localhost.
+//click cookie Button Field box start. 
+//if(!WDS.browser.findElements(pkg.By.id(&apos;cookie-consent&apos;)).isEmpty()){	
+//  var wait63 = new support_ui.WebDriverWait(WDS.browser, 100);
+//  var cookieField = wait63.until(conditions.elementToBeClickable(pkg.By.id(&apos;cookie-consent&apos;)));
+//  
+//  if (cookieField.isDisplayed()) {  
+//  	var cookieButtonField = WDS.browser.findElement(pkg.By.xpath(&quot;//a[@class=&apos;cc-set-cookie btn btn-green&apos;]&quot;));   
+//     if (cookieButtonField.isDisplayed()) { 
+//       cookieButtonField.click();  
+//       WDS.log.info(&quot;Clicked on cookie button 2 &quot;);
+//    }
+//  }
+//}
+
+java.lang.Thread.sleep(1000);
+
+//Company details.
+if(radioBusiness != 0){
+WDS.log.info(&quot;Customer is a Business member inserting identificationFields &quot;);
+
+//saves isBusinessField field  
+if(!WDS.browser.findElements(pkg.By.id(&apos;businessName&apos;)).isEmpty()){ 
+var businessNameField = WDS.browser.findElement(pkg.By.id(&apos;businessName&apos;));
+businessNameField.click();
+businessNameField.sendKeys([businessName]); 
+WDS.log.info(&quot;Inserted businessNameField&quot;);
+}
+
+//clicks identification field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;identificationFields0.bid.value&apos;)).isEmpty()){ 
+var identificationField = WDS.browser.findElement(pkg.By.id(&apos;identificationFields0.bid.value&apos;));
+identificationField.click();
+identificationField.sendKeys([identification]); 
+WDS.log.info(&quot;Inserted identificationField&quot;);
+ }
+}
+
+//Contactpersoon
+java.lang.Thread.sleep(1000);
+
+// We ensure initials element is clickable.
+if(!WDS.browser.findElements(pkg.By.id(&apos;initials&apos;)).isEmpty()){
+var wait39 = new support_ui.WebDriverWait(WDS.browser, 100);
+var initialsField = wait39.until(conditions.elementToBeClickable(pkg.By.id(&apos;initials&apos;)));
+   if (initialsField.isDisplayed()) {
+     initialsField.click();
+     initialsField.sendKeys([initials]); 
+     WDS.log.info(&quot;Inserted initials&quot;);
+   }
+}
+
+// saves gender Field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;gender&apos;)).isEmpty()){ 
+var wait36 = new support_ui.WebDriverWait(WDS.browser, 100);
+var genderField = wait36.until(conditions.elementToBeClickable(pkg.By.id(&apos;gender&apos;)));
+   if (genderField.isDisplayed()) {
+     var select = new ui.Select(genderField) 
+     WDS.log.info(&apos;Before selected gender: &apos; + select.getFirstSelectedOption().getText()) 
+     select.selectByVisibleText(gender) 
+     WDS.log.info(&apos;Currently selected gender: &apos; + select.getFirstSelectedOption().getText())     
+   }
+}
+
+// saves title field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;titleId&apos;)).isEmpty()){
+   var titleField = WDS.browser.findElement(pkg.By.id(&apos;titleId&apos;)); 
+   if (titleField.isDisplayed()) {
+     var select = new ui.Select(titleField) 
+     WDS.log.info(&apos;Before selected title: &apos; + select.getFirstSelectedOption().getText()) 
+     select.selectByVisibleText(title) 
+     WDS.log.info(&apos;Currently selected title: &apos; + select.getFirstSelectedOption().getText())
+   }
+}
+
+//saves firstname field.  
+if(!WDS.browser.findElements(pkg.By.id(&apos;firstname&apos;)).isEmpty()){ 
+var firstnameField = WDS.browser.findElement(pkg.By.id(&apos;firstname&apos;));
+    if (firstnameField.isDisplayed()) {
+    	   firstnameField.click();
+        firstnameField.sendKeys([firstname]); 
+        WDS.log.info(&quot;Inserted firstname&quot;);
+    }
+}
+
+//saves infix field.  
+if(!WDS.browser.findElements(pkg.By.id(&apos;infix&apos;)).isEmpty()){ 
+var infixField = WDS.browser.findElement(pkg.By.id(&apos;infix&apos;));
+    if (infixField.isDisplayed()) {
+    	   infixField.click();
+        infixField.sendKeys([infix]); 
+        WDS.log.info(&quot;Inserted infix&quot;);
+    }
+}
+
+//saves lastname field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;lastname&apos;)).isEmpty()){
+var lastnameField = WDS.browser.findElement(pkg.By.id(&apos;lastname&apos;));
+   if (lastnameField.isDisplayed()) {
+   	lastnameField.click();
+     lastnameField.sendKeys([lastname]); 
+     WDS.log.info(&quot;Inserted lastname&quot;);
+   }
+}
+
+//saves birthDay field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;birthDay&apos;)).isEmpty()){
+var birthDayField = WDS.browser.findElement(pkg.By.id(&apos;birthDay&apos;));
+   if (birthDayField.isDisplayed()) {
+   	  birthDayField.click();
+      birthDayField.sendKeys([birthDay]); 
+      WDS.log.info(&quot;Inserted birthDay&quot;);
+   }
+}
+
+//saves birthMonth field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;birthMonth&apos;)).isEmpty()){
+var birthMonthField = WDS.browser.findElement(pkg.By.id(&apos;birthMonth&apos;));
+     if (birthMonthField.isDisplayed()) {
+        birthMonthField.click();
+        birthMonthField.sendKeys([birthMonth]); 
+        WDS.log.info(&quot;Inserted birthMonth&quot;);
+     }
+}
+
+//saves birthYear field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;birthYear&apos;)).isEmpty()){
+var birthYearField = WDS.browser.findElement(pkg.By.id(&apos;birthYear&apos;)); 
+   if (birthYearField.isDisplayed()) {
+   	birthYearField.click();
+     birthYearField.sendKeys([birthYear]); 
+     WDS.log.info(&quot;Inserted birthYear&quot;);
+   }
+}
+
+//Contact details
+
+//saves email field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;email&apos;)).isEmpty()){ 
+var emailField = WDS.browser.findElement(pkg.By.id(&apos;email&apos;));
+  if (emailField.isDisplayed()) { 
+  	emailField.click(); 
+     emailField.sendKeys([mail]); 
+     WDS.log.info(&quot;Inserted email&quot;);
+  }
+}
+
+//saves emailRepeat field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;emailRepeat&apos;)).isEmpty()){
+var emailRepeatField = WDS.browser.findElement(pkg.By.id(&apos;emailRepeat&apos;));
+ if (emailRepeatField.isDisplayed()) { 
+      emailRepeatField.click(); 
+      emailRepeatField.sendKeys([mail]); 
+      WDS.log.info(&quot;Inserted emailRepeat&quot;);
+   }
+}
+
+//click body voor Ajax validation.
+var bodyField1 = WDS.browser.findElement(pkg.By.id(&apos;body&apos;)); 
+bodyField1.click(); 
+WDS.log.info(&quot;Clicked body&quot;);
+
+//Business address
+
+//saves Adress1 field.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;address.addressLine1&apos;]&quot;)).isEmpty()){
+     var adresField = WDS.browser.findElement(pkg.By.id(&apos;address.addressLine1&apos;)); 
+     if (adresField.isDisplayed()) {     	
+           adresField.sendKeys([adres1]); 
+           WDS.log.info(&quot;Inserted adres1 &quot;);
+	}
+}
+
+//saves Adress2 field.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;address.addressLine2&apos;]&quot;)).isEmpty()){
+    var adresField2 = WDS.browser.findElement(pkg.By.id(&apos;address.addressLine2&apos;)); 
+    if (adresField2.isDisplayed()) {    	 
+      adresField2.sendKeys([adres2]); 
+      WDS.log.info(&quot;Inserted adres2 &quot;);
+    }
+}
+
+//saves Adress3 field.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;address.addressLine3&apos;]&quot;)).isEmpty()){
+   var adresField3 = WDS.browser.findElement(pkg.By.id(&apos;address.addressLine3&apos;)); 
+   if (adresField3.isDisplayed()) {   
+     adresField3.sendKeys([adres3]); 
+     WDS.log.info(&quot;Inserted adres3 &quot;);
+   }
+}
+
+
+//saves address.zipCode field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;address.zipCode&apos;)).isEmpty()){
+var zipCodeField = WDS.browser.findElement(pkg.By.id(&apos;address.zipCode&apos;));
+ if (zipCodeField.isDisplayed()) {  
+   zipCodeField.sendKeys([zipCode]); 
+   WDS.log.info(&quot;Inserted zipCode&quot;);
+ }
+}
+
+
+//saves housenumber field.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;address.houseNr&apos;]&quot;)).isEmpty()){	
+var housenumberField = WDS.browser.findElement(pkg.By.xpath(&quot;//input[@id=&apos;address.houseNr&apos;]&quot;));
+   if (housenumberField.isDisplayed()) {   
+       housenumberField.sendKeys([housenumber]);
+       WDS.log.info(&quot;Inserted housenumber&quot;);
+    }
+}
+
+//saves address.city field. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;address.city&apos;)).isEmpty()){
+var cityField = WDS.browser.findElement(pkg.By.id(&apos;address.city&apos;)); 
+  if (cityField.isDisplayed()) {  
+      cityField.sendKeys([city]); 
+      WDS.log.info(&quot;Inserted city&quot;);
+  }
+}
+
+//Postal address different.
+if(radioBusiness != 0 &amp;&amp; sameFacAdres != 0){
+WDS.log.info(&quot;Activates (SameFac) radio for Different Billing Adress&quot;);
+
+//activates billing adress fields.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//div[@id=&apos;samefac&apos;]/div/div/label/span&quot;)).isEmpty()){	 
+   var radioDifferentAdressField = WDS.browser.findElement(pkg.By.xpath(&quot;//div[@id=&apos;samefac&apos;]/div/div/label/span&quot;));
+   if (radioDifferentAdressField.isDisplayed()) {       
+        radioDifferentAdressField.click();
+        WDS.log.info(&quot;Clicked radio Different Adress&quot;);
+    }
+}
+
+//saves billinghousenumber field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.houseNr&apos;)).isEmpty()){
+var billinghousenumberField = WDS.browser.findElement(pkg.By.id(&apos;addressF.houseNr&apos;));
+   if (billinghousenumberField.isDisplayed()) {
+       billinghousenumberField.sendKeys([blghousenumber]);
+       WDS.log.info(&quot;Inserted Different billing housenumber&quot;);
+    }
+}
+	
+//saves billing adress1 field. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.addressLine1&apos;)).isEmpty()){
+var billingField1 = WDS.browser.findElement(pkg.By.id(&apos;addressF.addressLine1&apos;)); 
+  if (billingField1.isDisplayed()) {  
+      billingField1.sendKeys([billingaddressline1]); 
+      WDS.log.info(&quot;Inserted Different billingadress1 &quot;);
+  }
+}
+
+//saves billing adress2 field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.addressLine2&apos;)).isEmpty()){
+var billingField2 = WDS.browser.findElement(pkg.By.id(&apos;addressF.addressLine2&apos;)); 
+  if (billingField2.isDisplayed()) { 
+      billingField2.sendKeys([billingaddressline2]); 
+      WDS.log.info(&quot;Inserted Different billingadress2 &quot;);
+  }
+}
+
+//saves billing adress3 field. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.addressLine3&apos;)).isEmpty()){
+var billingField3 = WDS.browser.findElement(pkg.By.id(&apos;addressF.addressLine3&apos;)); 
+  if (billingField3.isDisplayed()) {
+      billingField3.sendKeys([billingaddressline3]); 
+      WDS.log.info(&quot;Inserted Different billingadress3&quot;);
+  }
+ }
+
+//saves billing City field. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.city&apos;)).isEmpty()){
+var billingCity = WDS.browser.findElement(pkg.By.id(&apos;addressF.city&apos;)); 
+  if (billingCity.isDisplayed()) {  	 
+      billingCity.sendKeys([blgcity]); 
+      WDS.log.info(&quot;Inserted Different billing City &quot;);
+  }
+ }
+
+ //saves billing Zipcode field. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.zipCode&apos;)).isEmpty()){
+var billingZipcode = WDS.browser.findElement(pkg.By.id(&apos;addressF.zipCode&apos;)); 
+  if (billingZipcode.isDisplayed()) {  	
+      billingZipcode.sendKeys([billingzipcode]); 
+      WDS.log.info(&quot;Inserted Different billing Zipcode &quot;);
+  }
+ }
+ 
+}
+
+java.lang.Thread.sleep(1000);
+
+//click body
+var bodyField = WDS.browser.findElement(pkg.By.id(&apos;body&apos;)); 
+bodyField.click(); 
+WDS.log.info(&quot;Clicked body&quot;);
+
+//Navigate to the next page --&gt; Are your details correct?
+
+var wait2 = new support_ui.WebDriverWait(WDS.browser, 100);
+var secondButton = wait2.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)));
+
+var secondButtonAction = new org.openqa.selenium.interactions.Actions(WDS.browser);
+
+  if (secondButton.isDisplayed()) {     
+      secondButton.sendKeys(org.openqa.selenium.Keys.RETURN);
+      WDS.log.info(&quot;Clicked on the second nextButton&quot;);
+  }
+
+//Cookie 4
+
+//Only needed on localhost for browser that don&apos;t accept/store the cookie coming from localhost.
+//click cookie Button Field box start. 
+//if(!WDS.browser.findElements(pkg.By.id(&apos;cookie-consent&apos;)).isEmpty()){	
+//  var wait33 = new support_ui.WebDriverWait(WDS.browser, 100);
+//  var cookieField = wait33.until(conditions.elementToBeClickable(pkg.By.id(&apos;cookie-consent&apos;)));
+//  
+//  if (cookieField.isDisplayed()) {   	
+//  	var cookieButtonField = WDS.browser.findElement(pkg.By.xpath(&quot;//a[@class=&apos;cc-set-cookie btn btn-green&apos;]&quot;));   
+//     if (cookieButtonField.isDisplayed()) { 
+//       cookieButtonField.click();  
+//       WDS.log.info(&quot;Clicked on cookie button 4 &quot;);
+//    }
+//  }        
+//}
+
+
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)).isEmpty()){ 
+  var wait40 = new support_ui.WebDriverWait(WDS.browser, 1000);
+  var thirdButton = wait40.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)));
+
+  if (thirdButton.isDisplayed()) {
+     thirdButton.sendKeys(org.openqa.selenium.Keys.RETURN);
+     WDS.log.info(&quot;Clicked on the Third nextButton&quot;);
+  }
+}
+
+//FINAL --&gt; How would you like to pay?
+
+//Cookie 5
+
+//Only needed on localhost for browser that don&apos;t accept/store the cookie coming from localhost.
+//click cookie Button Field box 
+//if(!WDS.browser.findElements(pkg.By.id(&apos;cookie-consent&apos;)).isEmpty()){	
+//  var wait35 = new support_ui.WebDriverWait(WDS.browser, 100);
+//  var cookieField2 = wait35.until(conditions.elementToBeClickable(pkg.By.id(&apos;cookie-consent&apos;)));
+//  
+//  if (cookieField2.isDisplayed()) {   	
+//  	var cookieButtonField31 = WDS.browser.findElement(pkg.By.xpath(&quot;//a[@class=&apos;cc-set-cookie btn btn-green&apos;]&quot;));   
+//     if (cookieButtonField31.isDisplayed()) { 
+//       cookieButtonField31.sendKeys(org.openqa.selenium.Keys.RETURN);
+//       WDS.log.info(&quot;Clicked on cookie button 6 &quot;);
+//    }
+//  }        
+//}
+
+java.lang.Thread.sleep(1000);
+
+//creditcard configuration. 
+if(creditCard != 0){
+WDS.log.info(&quot;Creditcard configuration &quot;);
+
+//switching to creditcard payments.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//div[@id=&apos;choosePaymentType&apos;]/div/div[3]/label&quot;)).isEmpty()){	
+var wait10 = new support_ui.WebDriverWait(WDS.browser, 100);
+var creditCardChoice = wait10.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//div[@id=&apos;choosePaymentType&apos;]/div/div[3]/label&quot;)));	
+	WDS.log.info(&quot;Credit Card Choice &quot;);
+  if (creditCardChoice.isDisplayed()) { 
+      creditCardChoice.click();   
+      WDS.log.info(&quot;Clicked on Credit Card Choice &quot;);
+  }
+ }
+
+
+WDS.browser.switchTo().frame(&quot;iframe&quot;);
+
+//inserting card expiration Month.
+ if(!WDS.browser.findElements(pkg.By.xpath(&quot;//select[@id=&apos;ekashu_input_expires_end_month&apos;]&quot;)).isEmpty()){	
+  var cardExpiresEndMonth = WDS.browser.findElement(pkg.By.xpath(&quot;//select[@id=&apos;ekashu_input_expires_end_month&apos;]&quot;));
+  if (cardExpiresEndMonth.isDisplayed()) {
+      cardExpiresEndMonth.click(); 
+      cardExpiresEndMonth.sendKeys([cardExpMonth]);
+      WDS.log.info(&quot;Inserted Credit Card Expires End Month &quot;);
+  }
+ }
+
+//inserting card expiration Year.
+ if(!WDS.browser.findElements(pkg.By.xpath(&quot;//select[@id=&apos;ekashu_input_expires_end_year&apos;]&quot;)).isEmpty()){	
+  var cardExpiresEndYear = WDS.browser.findElement(pkg.By.xpath(&quot;//select[@id=&apos;ekashu_input_expires_end_year&apos;]&quot;));
+  if (cardExpiresEndYear.isDisplayed()) {
+      cardExpiresEndYear.click(); 
+      cardExpiresEndYear.sendKeys([cardExpYear]);
+      WDS.log.info(&quot;Inserted Credit Card Expires End Year &quot;);
+  }
+ }
+
+//inserting card Verification number.
+ if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_verification_value&apos;]&quot;)).isEmpty()){	
+  var cardVerification = WDS.browser.findElement(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_verification_value&apos;]&quot;));
+  if (cardVerification.isDisplayed()) {
+      cardVerification.click(); 
+      cardVerification.clear();
+      cardVerification.sendKeys([cardVerf]);
+      WDS.log.info(&quot;Inserted Credit Card verification &quot;);
+  }
+ }
+
+//inserting credit card number.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_card_number&apos;]&quot;)).isEmpty()){	
+  var creditCardNumber = WDS.browser.findElement(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_card_number&apos;]&quot;));
+  if (creditCardNumber.isDisplayed()) {
+      creditCardNumber.click();       
+      creditCardNumber.sendKeys([cardnumber]);
+      WDS.log.info(&quot;Inserted Credit Card Number &quot;);
+  }
+ }
+
+//ekashu submit button.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_submit_continue_button&apos;]&quot;)).isEmpty()){
+var wait12 = new support_ui.WebDriverWait(WDS.browser, 1000);
+var creditCardButton = wait12.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_submit_continue_button&apos;]&quot;)));		
+var creditCardButtonAction = new org.openqa.selenium.interactions.Actions(WDS.browser);
+  if (creditCardButton.isDisplayed()) {
+      creditCardButtonAction.moveToElement(creditCardButton).click().perform();   
+      WDS.log.info(&quot;Clicked ekashu Continue button &quot;);
+  }
+ }
+
+java.lang.Thread.sleep(5000);
+WDS.browser.switchTo().parentFrame();
+} else {
+WDS.log.info(&quot;No Creditcard configuration only bankaccounts &quot;);
+
+if(!WDS.browser.findElements(pkg.By.id(&apos;accountNr&apos;)).isEmpty()){	
+  var wait37 = new support_ui.WebDriverWait(WDS.browser, 100);
+  var accountNrField = wait37.until(conditions.elementToBeClickable(pkg.By.id(&apos;accountNr&apos;)));
+  if (accountNrField.isDisplayed()) {
+      accountNrField.click(); 
+      accountNrField.clear();
+      accountNrField.sendKeys([accountNr]);
+      WDS.log.info(&quot;Inserted accountNr &quot;);
+  }
+ }
+
+ if(!WDS.browser.findElements(pkg.By.id(&apos;accountHolderName&apos;)).isEmpty()){	
+  var accountHolderNameField = WDS.browser.findElement(pkg.By.id(&apos;accountHolderName&apos;));
+  if (accountHolderNameField.isDisplayed()) {
+      accountHolderNameField.click(); 
+      accountHolderNameField.clear();
+      accountHolderNameField.sendKeys([accountHolderName]);
+      WDS.log.info(&quot;Inserted accountHolderName &quot;);
+  }
+ }
+ 
+}
+
+//clicking directPermission checkbox 
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;accord&apos;]/following-sibling::label/span[@class=&apos;box&apos;]&quot;)).isEmpty()){	
+var wait8 = new support_ui.WebDriverWait(WDS.browser, 100);
+var directPermissionCheckBox=wait8.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//input[@id=&apos;accord&apos;]/following-sibling::label/span[@class=&apos;box&apos;]&quot;)));
+
+  if (directPermissionCheckBox.isDisplayed()) {      
+      directPermissionCheckBox.click();    
+      WDS.log.info(&quot;Clicked on directPermission &quot;);
+  }
+}
+
+//clicking agreeToTerms checkbox 
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;directDebitPermission&apos;]/following-sibling::label/span[@class=&apos;box&apos;]&quot;)).isEmpty()){	
+  var wait9 = new support_ui.WebDriverWait(WDS.browser, 100);
+  var agreeToTermsCheckBox = wait9.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//input[@id=&apos;directDebitPermission&apos;]/following-sibling::label/span[@class=&apos;box&apos;]&quot;)));
+
+ if (agreeToTermsCheckBox.isDisplayed()) {
+      agreeToTermsCheckBox.click();      
+      WDS.log.info(&quot;Clicked on agreeToTerms &quot;);
+  }
+}
+
+//Clicking the last Button to Finish the registration!
+var wait4 = new support_ui.WebDriverWait(WDS.browser, 100);
+var lastButton = wait4.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)));
+
+ if (lastButton.isDisplayed()) {
+     lastButton.click();
+     WDS.log.info(&quot;Clicked on the Last Button&quot;);
+ }
+
+//Cookie 6
+//Only needed on localhost for browser that don&apos;t accept/store the cookie coming from localhost.
+//click possible last cookie Button 
+//if(!WDS.browser.findElements(pkg.By.id(&apos;cookie-consent&apos;)).isEmpty()){
+//
+//  var wait53 = new support_ui.WebDriverWait(WDS.browser, 100);
+//  var cookieField = wait53.until(conditions.elementToBeClickable(pkg.By.id(&apos;cookie-consent&apos;))); 
+//  if (cookieField.isDisplayed()) {  
+//  	var cookieButtonField = WDS.browser.findElement(pkg.By.xpath(&quot;//a[@class=&apos;cc-set-cookie btn btn-green&apos;]&quot;));   
+//     if (cookieButtonField.isDisplayed()) { 
+//       cookieButtonField.click();  
+//       WDS.log.info(&quot;Clicked on cookie button 6&quot;);
+//    }
+//  }
+//}
+
+WDS.sampleResult.sampleEnd();
+
+} catch(ex) {
+   var scrFile = WDS.browser.getScreenshotAs(org.openqa.selenium.OutputType.FILE); 
+   org.apache.commons.io.FileUtils.copyFile(scrFile, new java.io.File(&quot;c:\\tmp\\screenshot.png&quot;));
+	
+   WDS.log.info(&quot;Sample Error &quot;+ex);
+   var endError = WDS.sampleResult.sampleEnd();
+   WDS.log.error(ex.message);   
+   WDS.sampleResult.setSuccessful(false);
+}
+
+WDS.log.info(&quot;Sample Finish !&quot;);
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc -  Chrome (Localhost with cookie support)" enabled="false">
+          <stringProp name="WebDriverSampler.script">//Headless Browser Sampler for testing the different functionalities on the registration proces.
+//WebDriver classes
+var pkg = JavaImporter(org.openqa.selenium); 
+var ui = JavaImporter(org.openqa.selenium.support.ui) 
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait); 
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions;
+var timeunit = java.util.concurrent.TimeUnit;
+
+WDS.sampleResult.sampleStart(); 
+WDS.log.info(&quot;Sample started &quot;);
+WDS.browser.manage().window().maximize()
+WDS.browser.manage().timeouts().implicitlyWait(30,timeunit.SECONDS);
+
+try {
+
+var vars = org.apache.jmeter.threads.JMeterContextService.getContext().getVariables();
+var url = vars.get(&apos;urlNormal&apos;);
+var urlAnwb = vars.get(&apos;urlAnwb&apos;);
+var anwb = vars.get(&apos;anwb&apos;);
+var mail = vars.get(&apos;mail&apos;);
+var licenseplates = vars.get(&apos;licenseplates&apos;);
+var mobilenumbers = vars.get(&apos;mobilenumbers&apos;);
+var cars = vars.get(&apos;cars&apos;);
+var pass = vars.get(&apos;pass&apos;);
+var infix = vars.get(&apos;infix&apos;);
+var firstname = vars.get(&apos;firstname&apos;);
+var initials = vars.get(&apos;initials&apos;);
+var lastname = vars.get(&apos;lastname&apos;);
+var birthDay = vars.get(&apos;birthDay&apos;);
+var birthMonth = vars.get(&apos;birthMonth&apos;);
+var birthYear = vars.get(&apos;birthYear&apos;);
+var zipCode = vars.get(&apos;zipCode&apos;);
+var city = vars.get(&apos;city&apos;);
+var accountNr = vars.get(&apos;accountNr&apos;);
+var radioBusiness = vars.get(&apos;isBusiness&apos;);
+var accountHolderName = vars.get(&apos;accountHolderName&apos;);
+var businessName = vars.get(&apos;businessName&apos;);
+var identification = vars.get(&apos;identification&apos;);
+var sameFacAdres = vars.get(&apos;isNotSameFacAdres&apos;);
+var billingaddressline1 = vars.get(&apos;blgaddressline1&apos;);
+var billingaddressline2 = vars.get(&apos;blgaddressline2&apos;);
+var billingaddressline3 = vars.get(&apos;blgaddressline3&apos;);
+var billingzipcode = vars.get(&apos;blgzipcode&apos;);
+var adres1 = vars.get(&apos;addressFirst&apos;);
+var adres2 = vars.get(&apos;addressSecond&apos;);
+var adres3 = vars.get(&apos;addressThird&apos;);
+var gender = vars.get(&apos;gender&apos;);
+var title = vars.get(&apos;title&apos;);
+var phonenr = vars.get(&apos;phonenr&apos;);
+var directdebititpermission = vars.get(&apos;ddebitperm&apos;);
+var housenumber = vars.get(&apos;housenumber&apos;);
+var blghousenumber = vars.get(&apos;blghousenumber&apos;);
+var blgcity = vars.get(&apos;blgcity&apos;);
+var creditCard = vars.get(&apos;creditCard&apos;);
+var cardnumber = vars.get(&apos;cardnumber&apos;);
+var cardExpMonth = vars.get(&apos;cardExpMonth&apos;);
+var cardExpYear = vars.get(&apos;cardExpYear&apos;);
+var cardVerf = vars.get(&apos;cardVerf&apos;);
+var anwbNummer = vars.get(&apos;anwbNummer&apos;);
+
+
+//opens website specified in &apos;Yellowbrick-aanmelden&apos;
+if(anwb == 1){
+	WDS.log.info(&quot;Sample - ANWB Yellowbrick-aanmelden with URL Anwb = &quot;+urlAnwb);
+	WDS.browser.get(urlAnwb); 
+	} else {
+	WDS.log.info(&quot;Sample - Defualt Yellowbrick-aanmelden with URL = &quot;+url);
+	WDS.browser.get(url); 
+}
+
+//First cookie that pops up!
+if(!WDS.browser.findElements(pkg.By.id(&apos;cookie-consent&apos;)).isEmpty()){	
+  var cookieField = WDS.browser.findElement(pkg.By.id(&apos;cookie-consent&apos;));
+  if (cookieField.isDisplayed()) {  
+  	var cookieSettingsButton = WDS.browser.findElement(pkg.By.xpath(&quot;//*[@id=&apos;cookie-consent&apos;]/div[1]/a[2]/i&quot;));   
+     if (cookieSettingsButton.isDisplayed()) { 
+           cookieSettingsButton.click();         
+           var cookieSetButton = WDS.browser.findElement(pkg.By.xpath(&quot;//a[@id=&apos;cc-set-cookie&apos;]&quot;));           
+         if(cookieSetButton.isDisplayed()){
+         	cookieSetButton.click(); 
+          WDS.log.info(&quot;Clicked on cookie set button 1&quot;);
+         	}       
+     }
+  }
+}
+
+java.lang.Thread.sleep(1000);	
+
+//If ANWB Lidmaatschap
+if(anwb == 1){
+
+WDS.log.info(&quot;ANWB Lidmaatschap&quot;);
+
+//inserting Anwb number 
+if(!WDS.browser.findElements(pkg.By.id(&apos;externalMembershipCodeValue&apos;)).isEmpty()){ 
+   var anwbNumberField = WDS.browser.findElement(pkg.By.id(&apos;externalMembershipCodeValue&apos;));
+   if (anwbNumberField.isDisplayed()) {
+      anwbNumberField.click();     
+      anwbNumberField.sendKeys([anwbNummer]); 
+      WDS.log.info(&quot;Inserted anwb Number &quot;);
+   }      
+ }
+
+}
+
+//saves how many cars there going to be park
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//div[@id=&apos;content-main-block-page&apos;]/div[1]/div[5]/div[3]/a[2]&quot;)).isEmpty()){ 
+var wait20 = new support_ui.WebDriverWait(WDS.browser, 100);	
+var addCarsField = wait20.until(conditions.presenceOfElementLocated(pkg.By.xpath(&quot;//div[@id=&apos;content-main-block-page&apos;]/div[1]/div[5]/div[3]/a[2]&quot;)));
+
+ if (addCarsField.isDisplayed()) {
+ 	  WDS.log.info(&quot;Start clicking/adding extra cars&quot;);     
+       addCarsField.click();       
+       WDS.log.info(&quot;Done Inserting/adding extra cars&quot;);      
+   }   
+ }
+
+
+//My car
+WDS.log.info(&quot;My car: Try inserting cars&quot;);
+
+var licensePlateArr = licenseplates.split(&quot;|&quot;);
+var mobileArr = mobilenumbers.split(&quot;|&quot;);
+for(i = 0; i &lt; cars; i++) {
+    WDS.log.info(&quot;My car: should insert car &quot; + i);
+
+    //save licensePlate
+    if(!WDS.browser.findElements(pkg.By.id(&apos;cars&apos;+i+&apos;.licensePlate&apos;)).isEmpty()) {
+        var wait = new support_ui.WebDriverWait(WDS.browser, 100);
+        var licensePlateField = wait.until(conditions.elementToBeClickable(pkg.By.id(&apos;cars&apos;+i+&apos;.licensePlate&apos;)));
+        if (licensePlateField.isDisplayed()) {
+            var plate = licensePlateArr[i];
+            licensePlateField.click();  	
+            licensePlateField.sendKeys([plate]); 
+            WDS.log.info(&quot;Inserted licensePlate &quot; + i + &quot;: &quot; + plate);
+        }
+    }
+
+    //saves mobile number.
+    if(!WDS.browser.findElements(pkg.By.id(&apos;cars&apos;+i+&apos;.mobile&apos;)).isEmpty()){ 
+    var mobileField = WDS.browser.findElement(pkg.By.id(&apos;cars&apos;+i+&apos;.mobile&apos;));
+    if (mobileField.isDisplayed()) {
+        var num = mobileArr[i];
+         mobileField.click();     
+         mobileField.sendKeys([num]); 
+         WDS.log.info(&quot;Inserted mobile &quot; + i + &quot;: &quot; + num);
+      }
+    }
+}
+
+//Q-Park and P+R pass.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;cars[0].extraPlusPassAmount&apos;]&quot;)).isEmpty()){ 
+var passField = WDS.browser.findElement(pkg.By.xpath(&quot;//input[@id=&apos;cars[0].extraPlusPassAmount&apos;]&quot;));
+  if (passField.isDisplayed()) {
+     passField.click();
+     passField.clear();
+     passField.sendKeys([pass]); 
+     WDS.log.info(&quot;Inserted Q-Park and P+R pass&quot;);
+  }
+}
+
+//saves isBusinessField field.  
+if(radioBusiness != 0){
+WDS.log.info(&quot;Customer is a Business member &quot;);
+	
+ if(!WDS.browser.findElements(pkg.By.xpath(&quot;//div[@class=&apos;customer-type-button selected&apos;]/div[@class=&apos;business&apos;]&quot;)).isEmpty()){ 
+   var isBusinessField = WDS.browser.findElement(pkg.By.xpath(&quot;//div[@class=&apos;customer-type-button selected&apos;]/div[@class=&apos;business&apos;]&quot;));
+   if (isBusinessField.isDisplayed()) {
+     isBusinessField.click(); 
+     WDS.log.info(&quot;Inserted isBusinessField&quot;);
+   }
+  }
+}
+
+
+//Click body.
+var bodyField = WDS.browser.findElement(pkg.By.id(&apos;body&apos;)); 
+bodyField.click(); 
+WDS.log.info(&quot;Clicked body&quot;);
+
+java.lang.Thread.sleep(1000);
+
+//Clicking the first Button
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)).isEmpty()){ 
+var wait28 = new support_ui.WebDriverWait(WDS.browser, 100);	
+var firstButton = wait28.until(conditions.presenceOfElementLocated(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)));
+  if (firstButton.isDisplayed()) {
+     firstButton.sendKeys(org.openqa.selenium.Keys.RETURN);
+     WDS.log.info(&quot;Clicked on the First button&quot;);
+  }
+}
+
+//Cookie 2
+//Only needed on localhost for browser that don&apos;t accept/store the cookie coming from localhost.
+//click cookie Button Field box start. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;cookie-consent&apos;)).isEmpty()){	
+  var wait63 = new support_ui.WebDriverWait(WDS.browser, 100);
+  var cookieField = wait63.until(conditions.elementToBeClickable(pkg.By.id(&apos;cookie-consent&apos;)));
+  
+  if (cookieField.isDisplayed()) {  
+  	var cookieButtonField = WDS.browser.findElement(pkg.By.xpath(&quot;//a[@class=&apos;cc-set-cookie btn btn-green&apos;]&quot;));   
+     if (cookieButtonField.isDisplayed()) { 
+       cookieButtonField.click();  
+       WDS.log.info(&quot;Clicked on cookie button 2 &quot;);
+    }
+  }
+}
+
+java.lang.Thread.sleep(1000);
+
+//Company details.
+if(radioBusiness != 0){
+WDS.log.info(&quot;Customer is a Business member inserting identificationFields &quot;);
+
+//saves isBusinessField field  
+if(!WDS.browser.findElements(pkg.By.id(&apos;businessName&apos;)).isEmpty()){ 
+var businessNameField = WDS.browser.findElement(pkg.By.id(&apos;businessName&apos;));
+businessNameField.click();
+businessNameField.sendKeys([businessName]); 
+WDS.log.info(&quot;Inserted businessNameField&quot;);
+}
+
+//clicks identification field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;identificationFields0.bid.value&apos;)).isEmpty()){ 
+var identificationField = WDS.browser.findElement(pkg.By.id(&apos;identificationFields0.bid.value&apos;));
+identificationField.click();
+identificationField.sendKeys([identification]); 
+WDS.log.info(&quot;Inserted identificationField&quot;);
+ }
+}
+
+//Contactpersoon
+java.lang.Thread.sleep(1000);
+
+// We ensure initials element is clickable.
+if(!WDS.browser.findElements(pkg.By.id(&apos;initials&apos;)).isEmpty()){
+var wait39 = new support_ui.WebDriverWait(WDS.browser, 100);
+var initialsField = wait39.until(conditions.elementToBeClickable(pkg.By.id(&apos;initials&apos;)));
+   if (initialsField.isDisplayed()) {
+     initialsField.click();
+     initialsField.sendKeys([initials]); 
+     WDS.log.info(&quot;Inserted initials&quot;);
+   }
+}
+
+// saves gender Field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;gender&apos;)).isEmpty()){ 
+var wait36 = new support_ui.WebDriverWait(WDS.browser, 100);
+var genderField = wait36.until(conditions.elementToBeClickable(pkg.By.id(&apos;gender&apos;)));
+   if (genderField.isDisplayed()) {
+     var select = new ui.Select(genderField) 
+     WDS.log.info(&apos;Before selected gender: &apos; + select.getFirstSelectedOption().getText()) 
+     select.selectByVisibleText(gender) 
+     WDS.log.info(&apos;Currently selected gender: &apos; + select.getFirstSelectedOption().getText())     
+   }
+}
+
+// saves title field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;titleId&apos;)).isEmpty()){
+   var titleField = WDS.browser.findElement(pkg.By.id(&apos;titleId&apos;)); 
+   if (titleField.isDisplayed()) {
+     var select = new ui.Select(titleField) 
+     WDS.log.info(&apos;Before selected title: &apos; + select.getFirstSelectedOption().getText()) 
+     select.selectByVisibleText(title) 
+     WDS.log.info(&apos;Currently selected title: &apos; + select.getFirstSelectedOption().getText())
+   }
+}
+
+//saves firstname field.  
+if(!WDS.browser.findElements(pkg.By.id(&apos;firstname&apos;)).isEmpty()){ 
+var firstnameField = WDS.browser.findElement(pkg.By.id(&apos;firstname&apos;));
+    if (firstnameField.isDisplayed()) {
+    	   firstnameField.click();
+        firstnameField.sendKeys([firstname]); 
+        WDS.log.info(&quot;Inserted firstname&quot;);
+    }
+}
+
+//saves infix field.  
+if(!WDS.browser.findElements(pkg.By.id(&apos;infix&apos;)).isEmpty()){ 
+var infixField = WDS.browser.findElement(pkg.By.id(&apos;infix&apos;));
+    if (infixField.isDisplayed()) {
+    	   infixField.click();
+        infixField.sendKeys([infix]); 
+        WDS.log.info(&quot;Inserted infix&quot;);
+    }
+}
+
+//saves lastname field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;lastname&apos;)).isEmpty()){
+var lastnameField = WDS.browser.findElement(pkg.By.id(&apos;lastname&apos;));
+   if (lastnameField.isDisplayed()) {
+   	lastnameField.click();
+     lastnameField.sendKeys([lastname]); 
+     WDS.log.info(&quot;Inserted lastname&quot;);
+   }
+}
+
+//saves birthDay field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;birthDay&apos;)).isEmpty()){
+var birthDayField = WDS.browser.findElement(pkg.By.id(&apos;birthDay&apos;));
+   if (birthDayField.isDisplayed()) {
+   	  birthDayField.click();
+      birthDayField.sendKeys([birthDay]); 
+      WDS.log.info(&quot;Inserted birthDay&quot;);
+   }
+}
+
+//saves birthMonth field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;birthMonth&apos;)).isEmpty()){
+var birthMonthField = WDS.browser.findElement(pkg.By.id(&apos;birthMonth&apos;));
+     if (birthMonthField.isDisplayed()) {
+        birthMonthField.click();
+        birthMonthField.sendKeys([birthMonth]); 
+        WDS.log.info(&quot;Inserted birthMonth&quot;);
+     }
+}
+
+//saves birthYear field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;birthYear&apos;)).isEmpty()){
+var birthYearField = WDS.browser.findElement(pkg.By.id(&apos;birthYear&apos;)); 
+   if (birthYearField.isDisplayed()) {
+   	birthYearField.click();
+     birthYearField.sendKeys([birthYear]); 
+     WDS.log.info(&quot;Inserted birthYear&quot;);
+   }
+}
+
+//Contact details
+
+//saves email field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;email&apos;)).isEmpty()){ 
+var emailField = WDS.browser.findElement(pkg.By.id(&apos;email&apos;));
+  if (emailField.isDisplayed()) { 
+  	emailField.click(); 
+     emailField.sendKeys([mail]); 
+     WDS.log.info(&quot;Inserted email&quot;);
+  }
+}
+
+//saves emailRepeat field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;emailRepeat&apos;)).isEmpty()){
+var emailRepeatField = WDS.browser.findElement(pkg.By.id(&apos;emailRepeat&apos;));
+ if (emailRepeatField.isDisplayed()) { 
+      emailRepeatField.click(); 
+      emailRepeatField.sendKeys([mail]); 
+      WDS.log.info(&quot;Inserted emailRepeat&quot;);
+   }
+}
+
+//click body voor Ajax validation.
+var bodyField1 = WDS.browser.findElement(pkg.By.id(&apos;body&apos;)); 
+bodyField1.click(); 
+WDS.log.info(&quot;Clicked body&quot;);
+
+//Business address
+
+//saves Adress1 field.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;address.addressLine1&apos;]&quot;)).isEmpty()){
+     var adresField = WDS.browser.findElement(pkg.By.id(&apos;address.addressLine1&apos;)); 
+     if (adresField.isDisplayed()) {     	
+           adresField.sendKeys([adres1]); 
+           WDS.log.info(&quot;Inserted adres1 &quot;);
+	}
+}
+
+//saves Adress2 field.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;address.addressLine2&apos;]&quot;)).isEmpty()){
+    var adresField2 = WDS.browser.findElement(pkg.By.id(&apos;address.addressLine2&apos;)); 
+    if (adresField2.isDisplayed()) {    	 
+      adresField2.sendKeys([adres2]); 
+      WDS.log.info(&quot;Inserted adres2 &quot;);
+    }
+}
+
+//saves Adress3 field.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;address.addressLine3&apos;]&quot;)).isEmpty()){
+   var adresField3 = WDS.browser.findElement(pkg.By.id(&apos;address.addressLine3&apos;)); 
+   if (adresField3.isDisplayed()) {   
+     adresField3.sendKeys([adres3]); 
+     WDS.log.info(&quot;Inserted adres3 &quot;);
+   }
+}
+
+
+//saves address.zipCode field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;address.zipCode&apos;)).isEmpty()){
+var zipCodeField = WDS.browser.findElement(pkg.By.id(&apos;address.zipCode&apos;));
+ if (zipCodeField.isDisplayed()) {  
+   zipCodeField.sendKeys([zipCode]); 
+   WDS.log.info(&quot;Inserted zipCode&quot;);
+ }
+}
+
+
+//saves housenumber field.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;address.houseNr&apos;]&quot;)).isEmpty()){	
+var housenumberField = WDS.browser.findElement(pkg.By.xpath(&quot;//input[@id=&apos;address.houseNr&apos;]&quot;));
+   if (housenumberField.isDisplayed()) {   
+       housenumberField.sendKeys([housenumber]);
+       WDS.log.info(&quot;Inserted housenumber&quot;);
+    }
+}
+
+//saves address.city field. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;address.city&apos;)).isEmpty()){
+var cityField = WDS.browser.findElement(pkg.By.id(&apos;address.city&apos;)); 
+  if (cityField.isDisplayed()) {  
+      cityField.sendKeys([city]); 
+      WDS.log.info(&quot;Inserted city&quot;);
+  }
+}
+
+//Postal address different.
+if(radioBusiness != 0 &amp;&amp; sameFacAdres != 0){
+WDS.log.info(&quot;Activates (SameFac) radio for Different Billing Adress&quot;);
+
+//activates billing adress fields.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//div[@id=&apos;samefac&apos;]/div/div/label/span&quot;)).isEmpty()){	 
+   var radioDifferentAdressField = WDS.browser.findElement(pkg.By.xpath(&quot;//div[@id=&apos;samefac&apos;]/div/div/label/span&quot;));
+   if (radioDifferentAdressField.isDisplayed()) {       
+        radioDifferentAdressField.click();
+        WDS.log.info(&quot;Clicked radio Different Adress&quot;);
+    }
+}
+
+//saves billinghousenumber field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.houseNr&apos;)).isEmpty()){
+var billinghousenumberField = WDS.browser.findElement(pkg.By.id(&apos;addressF.houseNr&apos;));
+   if (billinghousenumberField.isDisplayed()) {
+       billinghousenumberField.sendKeys([blghousenumber]);
+       WDS.log.info(&quot;Inserted Different billing housenumber&quot;);
+    }
+}
+	
+//saves billing adress1 field. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.addressLine1&apos;)).isEmpty()){
+var billingField1 = WDS.browser.findElement(pkg.By.id(&apos;addressF.addressLine1&apos;)); 
+  if (billingField1.isDisplayed()) {  
+      billingField1.sendKeys([billingaddressline1]); 
+      WDS.log.info(&quot;Inserted Different billingadress1 &quot;);
+  }
+}
+
+//saves billing adress2 field.
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.addressLine2&apos;)).isEmpty()){
+var billingField2 = WDS.browser.findElement(pkg.By.id(&apos;addressF.addressLine2&apos;)); 
+  if (billingField2.isDisplayed()) { 
+      billingField2.sendKeys([billingaddressline2]); 
+      WDS.log.info(&quot;Inserted Different billingadress2 &quot;);
+  }
+}
+
+//saves billing adress3 field. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.addressLine3&apos;)).isEmpty()){
+var billingField3 = WDS.browser.findElement(pkg.By.id(&apos;addressF.addressLine3&apos;)); 
+  if (billingField3.isDisplayed()) {
+      billingField3.sendKeys([billingaddressline3]); 
+      WDS.log.info(&quot;Inserted Different billingadress3&quot;);
+  }
+ }
+
+//saves billing City field. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.city&apos;)).isEmpty()){
+var billingCity = WDS.browser.findElement(pkg.By.id(&apos;addressF.city&apos;)); 
+  if (billingCity.isDisplayed()) {  	 
+      billingCity.sendKeys([blgcity]); 
+      WDS.log.info(&quot;Inserted Different billing City &quot;);
+  }
+ }
+
+ //saves billing Zipcode field. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;addressF.zipCode&apos;)).isEmpty()){
+var billingZipcode = WDS.browser.findElement(pkg.By.id(&apos;addressF.zipCode&apos;)); 
+  if (billingZipcode.isDisplayed()) {  	
+      billingZipcode.sendKeys([billingzipcode]); 
+      WDS.log.info(&quot;Inserted Different billing Zipcode &quot;);
+  }
+ }
+ 
+}
+
+java.lang.Thread.sleep(1000);
+
+//click body
+var bodyField = WDS.browser.findElement(pkg.By.id(&apos;body&apos;)); 
+bodyField.click(); 
+WDS.log.info(&quot;Clicked body&quot;);
+
+//Navigate to the next page --&gt; Are your details correct?
+
+var wait2 = new support_ui.WebDriverWait(WDS.browser, 100);
+var secondButton = wait2.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)));
+
+var secondButtonAction = new org.openqa.selenium.interactions.Actions(WDS.browser);
+
+  if (secondButton.isDisplayed()) {     
+      secondButton.sendKeys(org.openqa.selenium.Keys.RETURN);
+      WDS.log.info(&quot;Clicked on the second nextButton&quot;);
+  }
+
+//Cookie 4
+
+//Only needed on localhost for browser that don&apos;t accept/store the cookie coming from localhost.
+//click cookie Button Field box start. 
+if(!WDS.browser.findElements(pkg.By.id(&apos;cookie-consent&apos;)).isEmpty()){	
+  var wait33 = new support_ui.WebDriverWait(WDS.browser, 100);
+  var cookieField = wait33.until(conditions.elementToBeClickable(pkg.By.id(&apos;cookie-consent&apos;)));
+  
+  if (cookieField.isDisplayed()) {   	
+  	var cookieButtonField = WDS.browser.findElement(pkg.By.xpath(&quot;//a[@class=&apos;cc-set-cookie btn btn-green&apos;]&quot;));   
+     if (cookieButtonField.isDisplayed()) { 
+       cookieButtonField.click();  
+       WDS.log.info(&quot;Clicked on cookie button 4 &quot;);
+    }
+  }        
+}
+
+
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)).isEmpty()){ 
+  var wait40 = new support_ui.WebDriverWait(WDS.browser, 1000);
+  var thirdButton = wait40.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)));
+
+  if (thirdButton.isDisplayed()) {
+     thirdButton.sendKeys(org.openqa.selenium.Keys.RETURN);
+     WDS.log.info(&quot;Clicked on the Third nextButton&quot;);
+  }
+}
+
+//FINAL --&gt; How would you like to pay?
+
+//Cookie 5
+
+//Only needed on localhost for browser that don&apos;t accept/store the cookie coming from localhost.
+//click cookie Button Field box 
+if(!WDS.browser.findElements(pkg.By.id(&apos;cookie-consent&apos;)).isEmpty()){	
+  var wait35 = new support_ui.WebDriverWait(WDS.browser, 100);
+  var cookieField2 = wait35.until(conditions.elementToBeClickable(pkg.By.id(&apos;cookie-consent&apos;)));
+  
+  if (cookieField2.isDisplayed()) {   	
+  	var cookieButtonField31 = WDS.browser.findElement(pkg.By.xpath(&quot;//a[@class=&apos;cc-set-cookie btn btn-green&apos;]&quot;));   
+     if (cookieButtonField31.isDisplayed()) { 
+       cookieButtonField31.sendKeys(org.openqa.selenium.Keys.RETURN);
+       WDS.log.info(&quot;Clicked on cookie button 6 &quot;);
+    }
+  }        
+}
+
+java.lang.Thread.sleep(1000);
+
+//creditcard configuration. 
+if(creditCard != 0){
+WDS.log.info(&quot;Creditcard configuration &quot;);
+
+//switching to creditcard payments.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//div[@id=&apos;choosePaymentType&apos;]/div/div[3]/label&quot;)).isEmpty()){	
+var wait10 = new support_ui.WebDriverWait(WDS.browser, 100);
+var creditCardChoice = wait10.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//div[@id=&apos;choosePaymentType&apos;]/div/div[3]/label&quot;)));	
+	WDS.log.info(&quot;Credit Card Choice &quot;);
+  if (creditCardChoice.isDisplayed()) { 
+      creditCardChoice.click();   
+      WDS.log.info(&quot;Clicked on Credit Card Choice &quot;);
+  }
+ }
+
+
+WDS.browser.switchTo().frame(&quot;iframe&quot;);
+
+//inserting card expiration Month.
+ if(!WDS.browser.findElements(pkg.By.xpath(&quot;//select[@id=&apos;ekashu_input_expires_end_month&apos;]&quot;)).isEmpty()){	
+  var cardExpiresEndMonth = WDS.browser.findElement(pkg.By.xpath(&quot;//select[@id=&apos;ekashu_input_expires_end_month&apos;]&quot;));
+  if (cardExpiresEndMonth.isDisplayed()) {
+      cardExpiresEndMonth.click(); 
+      cardExpiresEndMonth.sendKeys([cardExpMonth]);
+      WDS.log.info(&quot;Inserted Credit Card Expires End Month &quot;);
+  }
+ }
+
+//inserting card expiration Year.
+ if(!WDS.browser.findElements(pkg.By.xpath(&quot;//select[@id=&apos;ekashu_input_expires_end_year&apos;]&quot;)).isEmpty()){	
+  var cardExpiresEndYear = WDS.browser.findElement(pkg.By.xpath(&quot;//select[@id=&apos;ekashu_input_expires_end_year&apos;]&quot;));
+  if (cardExpiresEndYear.isDisplayed()) {
+      cardExpiresEndYear.click(); 
+      cardExpiresEndYear.sendKeys([cardExpYear]);
+      WDS.log.info(&quot;Inserted Credit Card Expires End Year &quot;);
+  }
+ }
+
+//inserting card Verification number.
+ if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_verification_value&apos;]&quot;)).isEmpty()){	
+  var cardVerification = WDS.browser.findElement(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_verification_value&apos;]&quot;));
+  if (cardVerification.isDisplayed()) {
+      cardVerification.click(); 
+      cardVerification.clear();
+      cardVerification.sendKeys([cardVerf]);
+      WDS.log.info(&quot;Inserted Credit Card verification &quot;);
+  }
+ }
+
+//inserting credit card number.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_card_number&apos;]&quot;)).isEmpty()){	
+  var creditCardNumber = WDS.browser.findElement(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_card_number&apos;]&quot;));
+  if (creditCardNumber.isDisplayed()) {
+      creditCardNumber.click();       
+      creditCardNumber.sendKeys([cardnumber]);
+      WDS.log.info(&quot;Inserted Credit Card Number &quot;);
+  }
+ }
+
+//ekashu submit button.
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_submit_continue_button&apos;]&quot;)).isEmpty()){
+var wait12 = new support_ui.WebDriverWait(WDS.browser, 1000);
+var creditCardButton = wait12.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//input[@id=&apos;ekashu_submit_continue_button&apos;]&quot;)));		
+var creditCardButtonAction = new org.openqa.selenium.interactions.Actions(WDS.browser);
+  if (creditCardButton.isDisplayed()) {
+      creditCardButtonAction.moveToElement(creditCardButton).click().perform();   
+      WDS.log.info(&quot;Clicked ekashu Continue button &quot;);
+  }
+ }
+
+java.lang.Thread.sleep(5000);
+WDS.browser.switchTo().parentFrame();
+} else {
+WDS.log.info(&quot;No Creditcard configuration only bankaccounts &quot;);
+
+if(!WDS.browser.findElements(pkg.By.id(&apos;accountNr&apos;)).isEmpty()){	
+  var wait37 = new support_ui.WebDriverWait(WDS.browser, 100);
+  var accountNrField = wait37.until(conditions.elementToBeClickable(pkg.By.id(&apos;accountNr&apos;)));
+  if (accountNrField.isDisplayed()) {
+      accountNrField.click(); 
+      accountNrField.clear();
+      accountNrField.sendKeys([accountNr]);
+      WDS.log.info(&quot;Inserted accountNr &quot;);
+  }
+ }
+
+ if(!WDS.browser.findElements(pkg.By.id(&apos;accountHolderName&apos;)).isEmpty()){	
+  var accountHolderNameField = WDS.browser.findElement(pkg.By.id(&apos;accountHolderName&apos;));
+  if (accountHolderNameField.isDisplayed()) {
+      accountHolderNameField.click(); 
+      accountHolderNameField.clear();
+      accountHolderNameField.sendKeys([accountHolderName]);
+      WDS.log.info(&quot;Inserted accountHolderName &quot;);
+  }
+ }
+ 
+}
+
+//clicking directPermission checkbox 
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;accord&apos;]/following-sibling::label/span[@class=&apos;box&apos;]&quot;)).isEmpty()){	
+var wait8 = new support_ui.WebDriverWait(WDS.browser, 100);
+var directPermissionCheckBox=wait8.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//input[@id=&apos;accord&apos;]/following-sibling::label/span[@class=&apos;box&apos;]&quot;)));
+
+  if (directPermissionCheckBox.isDisplayed()) {      
+      directPermissionCheckBox.click();    
+      WDS.log.info(&quot;Clicked on directPermission &quot;);
+  }
+}
+
+//clicking agreeToTerms checkbox 
+if(!WDS.browser.findElements(pkg.By.xpath(&quot;//input[@id=&apos;directDebitPermission&apos;]/following-sibling::label/span[@class=&apos;box&apos;]&quot;)).isEmpty()){	
+  var wait9 = new support_ui.WebDriverWait(WDS.browser, 100);
+  var agreeToTermsCheckBox = wait9.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//input[@id=&apos;directDebitPermission&apos;]/following-sibling::label/span[@class=&apos;box&apos;]&quot;)));
+
+ if (agreeToTermsCheckBox.isDisplayed()) {
+      agreeToTermsCheckBox.click();      
+      WDS.log.info(&quot;Clicked on agreeToTerms &quot;);
+  }
+}
+
+//Clicking the last Button to Finish the registration!
+var wait4 = new support_ui.WebDriverWait(WDS.browser, 100);
+var lastButton = wait4.until(conditions.elementToBeClickable(pkg.By.xpath(&quot;//button[@class=&apos;next-tab mover&apos;]&quot;)));
+
+ if (lastButton.isDisplayed()) {
+     lastButton.click();
+     WDS.log.info(&quot;Clicked on the Last Button&quot;);
+ }
+
+//Cookie 6
+//Only needed on localhost for browser that don&apos;t accept/store the cookie coming from localhost.
+//click possible last cookie Button 
+if(!WDS.browser.findElements(pkg.By.id(&apos;cookie-consent&apos;)).isEmpty()){
+
+  var wait53 = new support_ui.WebDriverWait(WDS.browser, 100);
+  var cookieField = wait53.until(conditions.elementToBeClickable(pkg.By.id(&apos;cookie-consent&apos;))); 
+  if (cookieField.isDisplayed()) {  
+  	var cookieButtonField = WDS.browser.findElement(pkg.By.xpath(&quot;//a[@class=&apos;cc-set-cookie btn btn-green&apos;]&quot;));   
+     if (cookieButtonField.isDisplayed()) { 
+       cookieButtonField.click();  
+       WDS.log.info(&quot;Clicked on cookie button 6&quot;);
+    }
+  }
+}
+
+//WDS.browser.close();
+WDS.sampleResult.sampleEnd();
+
+} catch(ex) {
+   var scrFile = WDS.browser.getScreenshotAs(org.openqa.selenium.OutputType.FILE); 
+   org.apache.commons.io.FileUtils.copyFile(scrFile, new java.io.File(&quot;c:\\tmp\\screenshot.png&quot;));
+	
+   WDS.log.info(&quot;Sample Error &quot;+ex);
+   var endError = WDS.sampleResult.sampleEnd();
+   WDS.log.error(ex.message);   
+   WDS.sampleResult.setSuccessful(false);
+}
+
+WDS.log.info(&quot;Sample Finish !&quot;);
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

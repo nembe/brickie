@@ -1,0 +1,172 @@
+------------------------------------------------------------------------------------------------------------------
+                                             1: README
+------------------------------------------------------------------------------------------------------------------
+
+Jmeter Tests to test the YellowBrick Registration.
+The users in the CSV files doesn't need to be present in your database environment where Registration is running.
+To be able to run the different browsers like Firefox, EDGE, Internet Explorer and Chrome (Explained in Jmeter registration scripts) one need to install:
+1: Maven (section 5)
+2: Firefox, EDGE, Internet Explorer and Chrome (section 2 en 3)
+
+Follow these steps under section "Setting up a Jmeter environment for testing with the newer browsers".
+You can adjust the configuration settings as needed (See below).
+
+-------------------------------------------------------------------------------------------------------------------
+                                    2: Download the newest Browsers
+-------------------------------------------------------------------------------------------------------------------
+
+- https://www.mozilla.org/en-US/firefox/new/                                    (FireFox)
+- https://www.microsoft.com/en-ca/download/internet-explorer.aspx                 (IE)
+- https://www.microsoft.com/en-us/download/details.aspx?id=48126                 (EDGE)
+
+-------------------------------------------------------------------------------------------------------------------
+                                     3:  Tested Browser versions 
+-------------------------------------------------------------------------------------------------------------------
+
+Firefox (61.0.1 (64-bit))
+Microsoft EDGE (17.17134)
+Microsoft Internet Explorer 11 (11.165.17134.0)
+Google Chrome (67.0.3396.99)
+Headless (x)
+
+------------------------------------------------------------------------------------------------------------------
+                                             4:  CMD
+------------------------------------------------------------------------------------------------------------------
+To run these tests in the command line (without Jmeter GUI or Maven) perform the following actions:
+
+Go to directory src\test\jmeter
+
+jmeter -n -t Yellowbrick-aanmelden-Load.jmx -l webdriver.log 
+
+
+-------------------------------------------------------------------------------------------------------------------
+                                             5: Maven
+-------------------------------------------------------------------------------------------------------------------
+You can run all the Jmeter Scripts (tests) at once with maven (without Jmeter GUI). 
+1: "mvn verify"  or  "mvn clean install"
+2: The output results and the logs you can find in "<root-app>\target\jmeter\reports" 
+3: The logs you can find in "<root-app>\target\jmeter\logs"
+
+
+-------------------------------------------------------------------------------------------------------------------
+                                            6:  USERS 
+-------------------------------------------------------------------------------------------------------------------
+There are 90 users in this file.
+1: data/registratie-users.csv          -->    (local) 
+2: data/registratie-users-pre.csv      -->    (other environments)
+
+
+Warning:
+The email addresses of the users who are already registered, Must be adjusted at the next registration run.
+Please adapt these mail addresses in the relevant data input csv file.
+If these email addresses are already in the system (already used) then the Jmter scripts will fail.
+
+-------------------------------------------------------------------------------------------------------------------
+                    7:  Setting up a Jmeter environment for testing with the newer browsers
+-------------------------------------------------------------------------------------------------------------------
+
+
+1: Download the latest Selenium jars for Jmeter (https://www.seleniumhq.org/download/).
+   - You can find these Jars (Jar files) to add in "<app-root>\src\test\resources\lib-add"
+      - copy these jars (Jar files) to "<%JMETER_HOME%>\lib"
+   - The Jar components to replace you can find in "<app-root>\src\test\resources\lib-replace"
+      - replace these jars in "<%JMETER_HOME%>\lib"
+   - Remove the Selenium Jar files (version 2.52.0) in "<%JMETER_HOME%>\lib" (remove all selenium jars except api and remote-driver )
+        - selenium-chrome-driver-*.jar
+        - selenium-firefox-driver-*.jar, 
+        - selenium-htmlunit-driver-*.jar, 
+        - selenium-ie-driver-*.jar 
+        - selenium-support-*.jar
+ 
+2: Download the Selenium Drivers for the different Browsers and and put them "C:\tmp" folder.
+   - You can find these Drivers in <root>\src\test\resources\
+   - chromedriver.exe
+   - geckodriver.exe
+   - IEDriverServer.exe
+   - MicrosoftWebDriver.exe
+   
+-------------------------------------------------------------------------------------------------------------------
+                     8:   Adjust variables for the different paths (0/1 = false / true)
+-------------------------------------------------------------------------------------------------------------------
+ANWB registrations (anwb registration number)         --> anwb                  (in .csv file)
+Add number of cars (Max 2)                            --> cars                  (in .csv file)    
+Add number of qpark passes                            --> pass                  (in .csv file)
+Business users                                        --> isBusiness            (in .csv file)
+Possibility to enter billing address                  --> isNotSameFacAdres     (in .csv file)
+Possibility to pay by creditcard                      --> creditcard            (in .csv file)
+
+-------------------------------------------------------------------------------------------------------------------
+                                9:   CSV variable explanation
+-------------------------------------------------------------------------------------------------------------------
+
+   CSV name     = Web page             --> Explanation
+addressFirst    = addressLine1         --> Adres
+addressSecond   = addressLine2         --> Toevoeging huisnummer
+addressThird    = addressLine3         --> Optioneel 
+blgaddressline1 = billingaddressline1  --> Adres
+blgaddressline2 = billingaddressline2  --> Toevoeging huisnummer
+blgaddressline3 = billingaddressline3  --> Optioneel
+
+
+-------------------------------------------------------------------------------------------------------------------
+                                 10:  Running Jmeter GUI
+-------------------------------------------------------------------------------------------------------------------
+
+  This file contains user data (email addresses) suitable for the pre-prod environment.
+  = registration-users-*.csv
+  
+  Configuration steps in JMETER
+  - Import the Jmeter script for registration (<browser>-Registration.jmx)
+    Menu --> File --> Open --> navigate with the file explorer for importing (for example) "Chrome-Registration.jmx"
+  - Tell Jmeter which data and environment to use when running this script
+    Open Thread Group --> navigate to "Server-Variables" --> change the Variables with the names: 
+	"urlNormal" = https://nl-pre.brickparking.com/Yellowbrick-aanmelden 
+	"urlAnwb" = https://nl-pre.brickparking.com/Yellowbrick-aanmelden/subscribe/register.do?productGroupId=4 
+	"usersData" = registration-users-pre.csv
+  - Done, Ready to start the Jmeter test!
+
+  
+-------------------------------------------------------------------------------------------------------------------
+                            11:  Jmeter Settings for GUI aanmelden (Thread Group)
+-------------------------------------------------------------------------------------------------------------------
+Yellowbrick-aanmelden-Load.jmx
+
+Number of Threads (users) = 10
+Ramp-Up Period (seconds)  = 60
+Loop count = 1
+  
+  
+------------------------------------------------------------------------------------------------------------------- 
+        12:  Preparation: Install Jmeter and the Selenium WebDriver (Driver) for Chrome, FireFox, IE, EDGE
+-------------------------------------------------------------------------------------------------------------------
+0: Install JMeter; set environment variable JMETER_HOME to jmeter top directory (containing bin and lib), and add it to Path environment variable.
+
+1: A WebDriver is needed, in the folder <app-root>\src\test\resources you can find all the latest drivers that are needed 
+   for coping to the correct location (where Jmeter can find them) --> "C:\tmp\driver\chromedriver.exe".
+   
+2: Install these files by copying them to the Jmeter folder - %JMETER_HOME%\lib\ext
+       1: jmeter-plugins-manager-0.20.jar
+       2: jmeter-plugins-webdriver-2.3.jar
+	   
+2.1: Open Jmeter GUI (in nieuw command prompt, simply type jmeter)
+     Menu -->  Options
+               Choose "Plugins Manager"	 
+			   Install the plugin Selenium/WebDriver Support
+
+3: Restart Jmeter
+   Webdriver plugin ready to be used.
+   
+
+------------------------------------------------------------------------------------------------------------------
+                                          13:  IE 11 Issues
+------------------------------------------------------------------------------------------------------------------
+Go to Internet Options -> Security
+For all zones (Internet, Local intranet, Trusted sites, Restricted sites) make sure that Enable Protected Mode value is the same - no matter checked or unchecked
+
+For IE 11 only, you will need to set a registry entry on the target computer so that the driver can maintain a connection to the instance of Internet Explorer it creates.
+For 32-bit Windows installations, the key you must examine in the registry editor is HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BFCACHE.
+For 64-bit Windows installations, the key is HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BFCACHE.
+Please note that the FEATURE_BFCACHE subkey may or may not be present, and should be created if it is not present.
+Important: Inside this key, create a DWORD value named iexplore.exe with the value of 0.
+
+------------------------------------------------------------------------------------------------------------------
